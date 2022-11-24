@@ -2,22 +2,22 @@
 
 
 
-    fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data.data.length);
-            let nbEleve = data.data.length;
-            let listE = [];
-            console.log(data.data[1].username);
-             for (let i = 0; i<nbEleve; i++) {
-                listE.push(data.data[i].username)
-            }
-            console.log(listE);
+fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data.data.length);
+        let nbEleve = data.data.length;
+        let listE = [];
+        console.log(data.data[1].username);
+        for (let i = 0; i < nbEleve; i++) {
+            listE.push(data.data[i].username)
+        }
+        console.log(listE);
 
 
 
-        })
-        .catch((error) => { console.log(error) })
+    })
+    .catch((error) => { console.log(error) })
 
 
 /* {
@@ -46,3 +46,16 @@ function addTicket(sujet, idUser) {
         .then(ticket => console.log(ticket))
         .catch(err => console.error(err));
 }; */
+
+
+function addAffUser(nom) {
+    AffUser.innerHTML = ` < option value ="">${nom}</option>`;
+/*     let affichage += select 
+affichage += option selected
+for (i){
+    affichage += option nom
+}
+affichage += /select 
+odcument.queryselector nouveau div . innerrHTMl = affichage
+*/
+}
