@@ -9,8 +9,9 @@
             let nbEleve = data.data.length;
             let listE = [];
             console.log(data.data[1].username);
-             for (let i = 0; i<nbEleve; i++) {
-                listE.push(data.data[i].username)
+            for (let i = 0; i<nbEleve; i++) {
+                //listE.push(data.data[i].username)
+            AffName(data.data[i].username)
             }
             console.log(listE);
 
@@ -46,3 +47,7 @@ function addTicket(sujet, idUser) {
         .then(ticket => console.log(ticket))
         .catch(err => console.error(err));
 }; */
+/* function AffName(nom){
+    const user = document.getElementById('select');
+    user.innerHTML = `<option value="">${nom}</option>`;
+} */
