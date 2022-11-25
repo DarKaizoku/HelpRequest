@@ -1,5 +1,12 @@
 const INPUT = document.getElementById('input');
 const USERid = document.getElementById('select');
+const HELP = document.getElementById('help');
+const NEXT = document.getElementById('next');
+
+let input = INPUT.value;
+let idUser = USERid.value;
+let idTicket =0;
+
 
 
 fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
@@ -12,11 +19,18 @@ fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
     })
     .catch((error) => { console.log(error) });
 
+    
+function affichUser(dataUser) {
+    console.log(dataUser[1].username);
+    let affichage = `<select class="form-select" id="floatingSelect" aria-label="Floating label select example">`;
+    affichage += `<option selected>Selectionnez votre prénom :</option>`;
+    for (let i = 0; i < dataUser.length; i++) {
+        affichage += `<option id="userID" value="" >${dataUser[i].username}</option>`;
+        console.log(dataUser[i].username);
+    };
+    document.getElementById('select').innerHTML = affichage;
+};
 
-
-let input = INPUT.value;
-let idUser = USERid.value;
-let idTicket =0;
 
 function addTicket(input, idUser) {
 
@@ -49,15 +63,8 @@ function addRowTab (idTicket,idUser,input){
 
 
 
+/* NEXT.addEventListener('click', )
 
+function suivant(){
 
-function affichUser(dataUser) {
-    console.log(dataUser[1].username);
-    let affichage = `<select class="form-select" id="floatingSelect" aria-label="Floating label select example">`;
-    affichage += `<option selected>Selectionnez votre prénom :</option>`;
-    for (let i = 0; i < dataUser.length; i++) {
-        affichage += `<option id="userID" value="" >${dataUser[i].username}</option>`;
-        console.log(dataUser[i].username);
-    };
-    document.getElementById('select').innerHTML = affichage;
-};
+} */
