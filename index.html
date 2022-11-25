@@ -13,9 +13,10 @@
     <script type="text/javascript" src="./script.js" defer></script>
 </head>
 
-<body>
+<body class="bg-light">
     <h1 class="test1 bg-warning text-center display-1"><strong>La Ticketterie</strong></h1>
-    <h2 class="text-center bg-info display-5">“Un artiste ne peut attendre aucune aide de ses pairs”, sinon prends un ticket!!
+    <h2 class="text-center bg-info display-5">“Un artiste ne peut attendre aucune aide de ses pairs”, sinon prends un
+        ticket!!
     </h2>
 
     <div class="mb-3">
@@ -33,7 +34,7 @@
             </div>
             <div class="col">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="formId1" id="formId1" placeholder="">
+                    <input type="text" class="form-control" name="formId1" id="input" placeholder="">
                     <label for="formId1">Tapez votre requette</label>
                 </div>
             </div>
@@ -42,11 +43,31 @@
             </div>
         </div>
     </div>
-<h3 class="bg-info text-center display-6"><strong>Liste des apprenant-e-s</strong></h3>
-<button type="button" class="btn btn-dark ">Au suivant !</button>
+    <h3 class="bg-info text-center display-6"><strong>Liste des apprenant-e-s</strong></h3>
+    <div class="text-center m-3"><button type="button" class="btn btn-dark">Au suivant !</button>
+    </div>
+    <div class="table-responsive m-3">
+        <table class="table w-75 mx-auto table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Id du ticket</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Je passe mon tour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+            </tbody>
+        </table>
+
+    </div>
+
+
 </body>
 
 </html>
-
-
-
