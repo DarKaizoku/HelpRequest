@@ -1,5 +1,5 @@
-
-
+const INPUT = document.getElementById('input');
+const USERid = document.getElementById('userID');
 
 
 fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
@@ -14,8 +14,20 @@ fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
     })
     .catch((error) => { console.log(error) })
 
+let input = INPUT.value ;
+    function addTicket(input, idUser) {
 
-
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ subject: 'help', userId: 'username' })
+        };
+    
+        fetch("url-ticket", options)
+            .then(response => response.json())
+            .then(ticket => console.log(ticket))
+            .catch(err => console.error(err));
+    };
     
 /* {
     fetch(`https://webhelprequest.deta.dev/tickets`) // test get simple !!--ticket
@@ -32,19 +44,7 @@ fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
 
 
 
-function addTicket(sujet, idUser) {
-
-    const options = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ subject: 'help', userId: 'username' })
-    };
-
-    fetch("url-ticket", options)
-        .then(response => response.json())
-        .then(ticket => console.log(ticket))
-        .catch(err => console.error(err));
-}; */
+ */
 
 
 function affichUser(dataUser) {
@@ -52,7 +52,7 @@ function affichUser(dataUser) {
         let affichage = `<select class="form-select" id="floatingSelect" aria-label="Floating label select example">`;
             affichage +=     `<option selected>Selectionnez votre prénom :</option>`;
         for (let i = 0; i < dataUser.length; i++) {
-            affichage += `<option value="">${dataUser[i].username}</option>`;
+            affichage += `<option value="" >${dataUser[i].username}</option>`;
             console.log(dataUser[i].username);
         };
         document.getElementById('select').innerHTML = affichage;

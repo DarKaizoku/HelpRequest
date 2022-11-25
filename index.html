@@ -13,23 +13,61 @@
     <script type="text/javascript" src="./script.js" defer></script>
 </head>
 
-<body>
-    <form id="test-form">
-        <h1 class="test1">la Ticketterie</h1>
-    </form>
+<body class="bg-light">
+    <h1 class="test1 bg-warning text-center display-1"><strong>La Ticketterie</strong></h1>
+    <h2 class="text-center bg-info display-5">“Un artiste ne peut attendre aucune aide de ses pairs”, sinon prends un
+        ticket!!
+    </h2>
+
     <div class="mb-3">
-        <label for="" class="form-label" id="ici"></label>
-        <select class="form-select form-select-lg" name="Nom" id="select">
-        </select>
-        <br>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="formId1" id="input" placeholder="">
-            <label for="formId1">Le Pourquoi du ticket :</label>
+        <label for="" class="form-label"></label>
+        <div class="row justify-content-center align-items-center g-2">
+            <div class="col">
+                <select class="form-select form-select-lg " name="Nom" id="select">
+                    <option selected>Selectionner votre nom</option>
+                    <div id="option">
+                        <option value="">New Delhi</option>
+                        <option value="">Istanbul</option>
+                        <option value="">Jakarta</option>
+                    </div>
+                </select>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="formId1" id="input" placeholder="">
+                    <label for="formId1">Tapez votre requette</label>
+                </div>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-dark">Demander de l'aide &#9757;</button>
+            </div>
         </div>
     </div>
+    <h3 class="bg-info text-center display-6"><strong>Liste des apprenant-e-s</strong></h3>
+    <div class="text-center m-3"><button type="button" class="btn btn-dark">Au suivant !</button>
+    </div>
+    <div class="table-responsive m-3">
+        <table class="table w-75 mx-auto table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Id du ticket</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Je passe mon tour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="">
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+            </tbody>
+        </table>
+
+    </div>
+
+
 </body>
 
 </html>
-
-
-
