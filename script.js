@@ -36,6 +36,15 @@ HELP.addEventListener('click', event =>{
     return addTicket(input,idUser);
 })
 
+NEXT.addEventListener('click', event =>{
+    //event.preventDefault();
+
+    let ligne = document.getElementById('table').firstChild;
+    
+    ligne.parentNode.removeChild(ligne);
+    
+})
+
 
 fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
     .then((response) => response.json())
@@ -82,23 +91,13 @@ function addRowTab (idTicket,idUser,input){
 
                 let affichage = document.getElementById('table');
                 const newRow = document.createElement("tr");
+                newRow.appendChild(addCase(idTicket));
+                newRow.appendChild(addCase(idUser));
+                newRow.appendChild(addCase(input));
                 affichage.appendChild(newRow);
-                addCase(idTicket);
-                addCase(idUser);
-                addCase(input);
-                
-                    /* affichage += `<tr class="" >
-                    <td scope="row">${idTicket}</td> 
-                    <td>${idUser}</td>
-                    <td>${input}</td>
-                    <td>"fct°supprimer ticket/row"</td>`; 
+}
 
-                document.getElementById('table').textContent = affichage;*/
-                
-
-};
-
-function addCase(data) {
+function addCase (data) {
     let affichage = document.getElementById('table');
     const newRow = document.createElement("td");
     const content = document.createTextNode(data)
@@ -114,8 +113,3 @@ function addCase(data) {
 
             
 }
-/* NEXT.addEventListener('click', )
-
-function suivant(){
-localList = objet[key].sort
-} */
