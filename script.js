@@ -1,4 +1,4 @@
-//const user = document.getElementById('zone-test');
+
 
 
 
@@ -15,6 +15,8 @@ fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
     .catch((error) => { console.log(error) })
 
 
+
+    
 /* {
     fetch(`https://webhelprequest.deta.dev/tickets`) // test get simple !!--ticket
         .then((response) => response.json())
@@ -27,6 +29,8 @@ fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
         })
         .catch((error) => { console.log(error) })
 };
+
+
 
 function addTicket(sujet, idUser) {
 
@@ -52,7 +56,7 @@ function affichUser(dataUser) {
             console.log(dataUser[i].username);
         };
         document.getElementById('select').innerHTML = affichage;
-        
+
     /*     let affichage += select 
     affichage += option selected
     for (i){
