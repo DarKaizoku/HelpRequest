@@ -5,14 +5,9 @@
 fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
     .then((response) => response.json())
     .then((data) => {
-        console.log(data.data.length);
-        let nbEleve = data.data.length;
-        let listE = [];
-        console.log(data.data[1].username);
-        for (let i = 0; i < nbEleve; i++) {
-            listE.push(data.data[i].username)
-        }
-        console.log(listE);
+        console.log(data);
+        let datA = data.data ;
+        affichUser(datA);
 
 
 
@@ -48,14 +43,22 @@ function addTicket(sujet, idUser) {
 }; */
 
 
-function addAffUser(nom) {
-    AffUser.innerHTML = ` < option value ="">${nom}</option>`;
-/*     let affichage += select 
-affichage += option selected
-for (i){
-    affichage += option nom
-}
-affichage += /select 
-odcument.queryselector nouveau div . innerrHTMl = affichage
-*/
-}
+function affichUser(dataUser) {
+        console.log(dataUser[1].username);
+        let affichage = `<select class="form-select" id="floatingSelect" aria-label="Floating label select example">`;
+            affichage +=     `<option selected>Selectionnez votre prénom :</option>`;
+        for (let i = 0; i < dataUser.length; i++) {
+            affichage += `<option value="">${dataUser[i].username}</option>`;
+            console.log(dataUser[i].username);
+        };
+        document.getElementById('select').innerHTML = affichage;
+        
+    /*     let affichage += select 
+    affichage += option selected
+    for (i){
+        affichage += option nom
+    }
+    affichage += /select 
+    odcument.queryselector nouveau div . innerrHTMl = affichage
+    */
+};
