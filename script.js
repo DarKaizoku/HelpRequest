@@ -2,20 +2,17 @@
 
 
 
-    fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data.data.length);
-            let nbEleve = data.data.length;
-            let listE = [];
-            console.log(data.data[1].username);
-            let affichage = '<option>'
-            for (let i = 0; i<nbEleve; i++) {
-                listE.push(data.data[i].username)
-            affichage += `${data.data[2].username}`
-            }
-        })
-        .catch((error) => { console.log(error) })
+fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
+        let datA = data.data ;
+        affichUser(datA);
+
+
+
+    })
+    .catch((error) => { console.log(error) })
 
 
 /* {
@@ -44,7 +41,24 @@ function addTicket(sujet, idUser) {
         .then(ticket => console.log(ticket))
         .catch(err => console.error(err));
 }; */
-/* function AffName(nom){
-    const user = document.getElementById('select');
-    user.innerHTML = `<option value="">${nom}</option>`;
-} */
+
+
+function affichUser(dataUser) {
+        console.log(dataUser[1].username);
+        let affichage = `<select class="form-select" id="floatingSelect" aria-label="Floating label select example">`;
+            affichage +=     `<option selected>Selectionnez votre prénom :</option>`;
+        for (let i = 0; i < dataUser.length; i++) {
+            affichage += `<option value="">${dataUser[i].username}</option>`;
+            console.log(dataUser[i].username);
+        };
+        document.getElementById('select').innerHTML = affichage;
+        
+    /*     let affichage += select 
+    affichage += option selected
+    for (i){
+        affichage += option nom
+    }
+    affichage += /select 
+    odcument.queryselector nouveau div . innerrHTMl = affichage
+    */
+};
