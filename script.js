@@ -9,14 +9,11 @@
             let nbEleve = data.data.length;
             let listE = [];
             console.log(data.data[1].username);
+            let affichage = '<option>'
             for (let i = 0; i<nbEleve; i++) {
-                //listE.push(data.data[i].username)
-            AffName(data.data[i].username)
+                listE.push(data.data[i].username)
+            affichage += `${data.data[2].username}`
             }
-            console.log(listE);
-
-
-
         })
         .catch((error) => { console.log(error) })
 

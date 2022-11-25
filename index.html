@@ -14,21 +14,36 @@
 </head>
 
 <body>
-    <form id="test-form">
-        <h1 class="test1">la Ticketterie</h1>
-    </form>
+    <h1 class="test1 bg-warning text-center display-1"><strong>La Ticketterie</strong></h1>
+    <h2 class="text-center bg-info display-5">“Un artiste ne peut attendre aucune aide de ses pairs”, sinon prends un ticket!!
+    </h2>
+
     <div class="mb-3">
         <label for="" class="form-label"></label>
-        <select class="form-select form-select-lg" name="Nom" id="select">
-                <option value="">New Delhi</option>
-                <option value="">Istanbul</option>
-                <option value="">Jakarta</option>
-        </select>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="formId1" id="formId1" placeholder="">
-            <label for="formId1">Name</label>
+        <div class="row justify-content-center align-items-center g-2">
+            <div class="col">
+                <select class="form-select form-select-lg " name="Nom" id="select">
+                    <option selected>Selectionner votre nom</option>
+                    <div id="option">
+                        <option value="">New Delhi</option>
+                        <option value="">Istanbul</option>
+                        <option value="">Jakarta</option>
+                    </div>
+                </select>
+            </div>
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="formId1" id="formId1" placeholder="">
+                    <label for="formId1">Tapez votre requette</label>
+                </div>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-dark">Demander de l'aide &#9757;</button>
+            </div>
         </div>
     </div>
+<h3 class="bg-info text-center display-6"><strong>Liste des apprenant-e-s</strong></h3>
+<button type="button" class="btn btn-dark ">Au suivant !</button>
 </body>
 
 </html>
