@@ -14,48 +14,52 @@ const NEXT = document.getElementById('next');
 
 
 
-let idTicket =0;
+let idTicket = 0;
 let idUser = "";
 
-
+//requete API des tickets toujours en attente à l'ouverture de la session
 fetch("https://webhelprequest.deta.dev/tickets")
-        .then(response => response.json())
-        .then(ticket => previous(ticket))
-        .catch(err => console.error(err));
-        
-
-function previous (data){
-        const DATA = data.data;
-        let nbTicket = DATA.length;
-        for(let i =0; i<nbTicket;i++){
-            addRowTab(DATA[i].key,DATA[i].users_id,DATA[i].subject)
-        }
+    .then(response => response.json())
+    .then(ticket => previous(ticket))
+    .catch(err => console.error(err));
 
 
+//remplissage du tableau à l'ouverture de la session
+function previous(data) {
+    const DATA = data.data;
+    let nbTicket = DATA.length;
+    for (let i = 0; i < nbTicket; i++) {
+        addRowTab(DATA[i].key, DATA[i].users_id, DATA[i].subject)
+    }
+}
 
-USERid.addEventListener('change', function (event){
+//mise en place de la selection du prénom
+USERid.addEventListener('change', function (event) {
     event.preventDefault();
     idUser = document.getElementById(`userID${this.value}`).textContent;
     return INPUT.value = "";
 })
 
-HELP.addEventListener('click', event =>{
+//mise en place du bouton "demande d'aide"
+HELP.addEventListener('click', event => {
     event.preventDefault();
     let input = INPUT.value;
-    return addTicket(input,idUser);
+    return addTicket(input, idUser);
 })
 
-NEXT.addEventListener('click', event =>{
+//mise en place du bouton "Suivant" qui supprime le premier ticket de la liste/tableau qui sera considérer donc traiter !!
+NEXT.addEventListener('click', event => {
     //event.preventDefault();
 
     let ligne = document.getElementById('table').firstChild;
-    
+    //console.log(document.getElementById('table').firstChild.firstChild.textContent)
+
     ligne.parentNode.removeChild(ligne);
-    
+    ticketOff(ligne.firstChild.textContent);
 })
 
-
-fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
+//requete API pour connaitre les prénoms des personnes qui peuvent utiliser les tickets !
+fetch(`https://webhelprequest.deta.dev/users`)
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
@@ -66,6 +70,7 @@ fetch(`https://webhelprequest.deta.dev/users`) // test get simple !!
     .catch((error) => { console.log(error) });
 
 
+//fonction qui affiche les prénoms
 function affichUser(dataUser) {
     console.log(dataUser[1].username);
     let affichage = `<select class="form-select" id="floatingSelect" aria-label="Floating label select example">`;
@@ -77,7 +82,7 @@ function affichUser(dataUser) {
     document.getElementById('select').innerHTML = affichage;
 };
 
-
+//fonction qui permet d'ajouter un ticket à l'API et au tableau
 function addTicket(input, idUser) {
 
     idTicket++;
@@ -93,20 +98,22 @@ function addTicket(input, idUser) {
         .then(ticket => console.log(ticket))
         .catch(err => console.error(err));
 
-        addRowTab(idTicket,idUser,input)
+    addRowTab(idTicket, idUser, input)
 };
 
-function addRowTab (idTicket,idUser,input){
+//fonction qui ajoute une ligne au tableau
+function addRowTab(idTicket, idUser, input) {
 
-                let affichage = document.getElementById('table');
-                const newRow = document.createElement("tr");
-                newRow.appendChild(addCase(idTicket));
-                newRow.appendChild(addCase(idUser));
-                newRow.appendChild(addCase(input));
-                affichage.appendChild(newRow);
+    let affichage = document.getElementById('table');
+    const newRow = document.createElement("tr");
+    newRow.appendChild(addCase(idTicket));
+    newRow.appendChild(addCase(idUser));
+    newRow.appendChild(addCase(input));
+    affichage.appendChild(newRow);
 }
 
-function addCase (data) {
+//fonction qui crée une case pour les lignes du tableau
+function addCase(data) {
     let affichage = document.getElementById('table');
     const newRow = document.createElement("td");
     const content = document.createTextNode(data)
@@ -115,10 +122,12 @@ function addCase (data) {
 }
 
 
-
-
-
-
-
-            
+//fonction qui desactive les tickets en attente
+function ticketOff(key) {
+    fetch(`https://webhelprequest.deta.dev/tickets/${key}`, {
+        "method": 'PATCH',
+        "body": new URLSearchParams({})
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
 }
