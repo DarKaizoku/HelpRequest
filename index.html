@@ -29,8 +29,10 @@
             </div>
             <div class="col">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="formId1" id="input" placeholder="">
-                    <label for="formId1">Tapez votre requette</label>
+                    <form id="form">
+                        <label for="formId1">Tapez votre requette</label>
+                        <input type="text" class="form-control" name="formId1" id="input" placeholder="">
+                </form>
                 </div>
             </div>
             <div class="col">
@@ -42,7 +44,6 @@
     <div class="text-center m-3"><button type="button" class="btn btn-dark" id="next">Au suivant !</button>
     </div>
     <div class="table-responsive m-3">
-        <form id="form2">
         <table class="table w-75 mx-auto table-striped table-bordered text-center">
             <thead>
                 <tr>
@@ -53,6 +54,7 @@
                     </th>
                 </tr>
             </thead>
+            <form id="form2">
                 <tbody id="table"></tbody>
         </table>
         </form>

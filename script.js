@@ -2,11 +2,13 @@ const INPUT = document.getElementById('input');
 const USERid = document.getElementById('select');
 const HELP = document.getElementById('help');
 const NEXT = document.getElementById('next');
+const FORM = document.getElementById('form');
+
 
 
 let idTicket = 0;
 let idUser = "";
-let bin = `<button type="submit" formtarget="_self" class="btn btn-danger mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+let bin = `<button type="button" formtarget="_self" class="btn btn-danger mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="16"
 height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
 <path
     d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
@@ -46,6 +48,15 @@ HELP.addEventListener('click', event => {
     return addTicket(input, idUser);
 })
 
+// Soumettre avec "Entrée" la mise en place du ticket
+FORM.addEventListener('submit', event => {
+    event.preventDefault();
+
+    let input = INPUT.value;
+    return addTicket(input, idUser);
+})
+
+
 //mise en place du bouton "Suivant" qui supprime le premier ticket de la liste/tableau qui sera considérer donc traiter !!
 NEXT.addEventListener('click', event => {
 
@@ -55,7 +66,6 @@ NEXT.addEventListener('click', event => {
     ligne.parentNode.removeChild(ligne);
     ticketOff(ligne.firstChild.textContent);
 })
-
 
 //requete API pour connaitre les prénoms des personnes qui peuvent utiliser les tickets !
 fetch(`https://webhelprequest.deta.dev/users`)
