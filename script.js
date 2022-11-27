@@ -1,12 +1,3 @@
-//function "PATCH" voir insomnia desactiver les tickets
-
-//ajouter boutton poubelle et case a cocher
-
-
-
-
-
-
 const INPUT = document.getElementById('input');
 const USERid = document.getElementById('select');
 const HELP = document.getElementById('help');
