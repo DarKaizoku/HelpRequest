@@ -12,6 +12,8 @@ const USERid = document.getElementById('select');
 const HELP = document.getElementById('help');
 const NEXT = document.getElementById('next');
 const BIN = document.getElementById('bin');
+const FORM = document.getElementById('form');
+
 
 
 
@@ -57,6 +59,14 @@ HELP.addEventListener('click', event => {
     return addTicket(input, idUser);
 })
 
+// Soumettre avec "Entrée" la mise en place du ticket
+FORM.addEventListener('submit', event => {
+    event.preventDefault();
+    let input = INPUT.value;
+    return addTicket(input, idUser);
+})
+
+
 //mise en place du bouton "Suivant" qui supprime le premier ticket de la liste/tableau qui sera considérer donc traiter !!
 NEXT.addEventListener('click', event => {
     //event.preventDefault();
@@ -68,13 +78,12 @@ NEXT.addEventListener('click', event => {
     ticketOff(ligne.firstChild.textContent);
 })
 
+/* //Evenement qui suprime la ligne précise où se trouve le bouton poubelle clické
 BIN.addEventListener('click', event => {
     let ligneBin = document.getElementById('table').currentTarget;
     ligneBin.parentNode.removeChild(ligneBin);
     ticketOff(ligneBin.currentTarget.textContent);
-
-
-})
+}) */
 
 
 //requete API pour connaitre les prénoms des personnes qui peuvent utiliser les tickets !
