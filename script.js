@@ -20,7 +20,9 @@ function previous(data) {
     const DATA = data.data;
     let nbTicket = DATA.length;
     for (let i = 0; i < nbTicket; i++) {
+        if(DATA[i].done == 0){
         addRowTab(DATA[i].key, DATA[i].users_id, DATA[i].subject)
+        }
     }
 }
 
